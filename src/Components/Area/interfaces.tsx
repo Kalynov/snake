@@ -1,16 +1,24 @@
 import React from 'react';
 import styled from "styled-components";
 
-export const  Wrapper = styled.div`
+const colors = ["transparent", "#000000"]
+
+export const  Area = styled.div`
     width: 500px;
     height: 500px;
     background-color: #dbeeae;
-    margin: 100px auto;
+    margin: 20px auto;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: flex-start;
     align-content: flex-start;
+`;
+
+export const Item = styled.div<{type: number}>`
+    width: 5px;     
+    height: 5px;
+    background-color: ${({type}) => colors[type]};
 `;
 
 export const Control = styled.div`

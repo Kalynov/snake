@@ -21,7 +21,7 @@ export default  (state = initialState, action: any) : InitialState => {
         return {
           ...state,
           ...action.size,
-          area: new Array(action.size.height).fill(new Array(action.size.weight).fill(0))
+          area: new Array(action.size.height).fill(new Array(action.size.width).fill(0))
         }
     }
       default: return state;

@@ -4,29 +4,26 @@ import {
   SNAKE_SET_COORDS,
   SNAKE_ADD_LENGTH,
   SNAKE_STEP,
-  SnakeSetLengthType,
-  SnakeSetCoordsType,
-  SnakeAddLengthType,
-  SnakeStepType
+  SNAKE_CHANGE_DIRECTION,
 } from  "./actions"
 
-type  Action = SnakeSetLengthType | SnakeSetCoordsType | SnakeAddLengthType | SnakeStepType;
-type DirectionType = "UP" | "DOWN" | "LEFT" | "RIGHT"
+import { TDirection, Action} from "./types"
 
 
 interface InitialState {
   length: number;
   coords: Array<Array<number>> | null,
-  direction:  DirectionType
+  direction:  TDirection,
+  timeoutId?: number,
 }
 
 let initialState: InitialState = {
   length: 0,
   coords: null,
-  direction: "RIGHT"
+  direction: "RIGHT",
 }
 
-export default  (state = initialState, action: Action) : InitialState => {
+export const snake = (state = initialState, action: Action) : InitialState => {
 
   switch (action.type){
     case SNAKE_SET_LENGTH: {
@@ -47,10 +44,41 @@ export default  (state = initialState, action: Action) : InitialState => {
         length: state.length++
       }
     }
+    case SNAKE_CHANGE_DIRECTION: {
+      return {
+        ...state,
+        direction: action.direction
+      }
+    }
     case SNAKE_STEP: {
       return {
         ...state,
-        
+        coords: state.coords && state.coords.map((el, i, arr) => {
+          if (i === 0){
+            let newArr = []
+            switch (state.direction){
+              case "RIGHT": {
+                newArr = [el[0],el[1]+1]
+                return newArr
+              }
+              case "LEFT": {
+                newArr = [el[0],el[1]-1]
+                return newArr
+              }
+              case "UP": {
+                newArr = [el[0]-1,el[1]]
+                return newArr
+              }
+              case "DOWN": {
+                newArr = [el[0]+1,el[1]]
+                return newArr
+              }
+              default: return el
+            }
+          } else {
+            return arr[i-1]
+          }          
+        })
       }
     }
     default: return state;
