@@ -48,7 +48,18 @@ export const GameArea = () => {
   })
 
   const step = () => {
-    dispatch(snakeStep())
+    let selfCross = false
+    const snakeBodyCoords = snake.coords.slice(1)
+    // snake.coords.forEach(el => {
+    //   if(el[0] + 1)
+    // })
+    if (snake.coords[0].includes(0) ||
+      snake.coords[0].includes(99)
+    ) {
+      pause()
+    } else {
+      dispatch(snakeStep())
+    }    
   } 
 
   const start = () => {

@@ -12,14 +12,14 @@ import { TDirection, Action} from "./types"
 
 interface InitialState {
   length: number;
-  coords: Array<Array<number>> | null,
+  coords: Array<Array<number>>,
   direction:  TDirection,
   timeoutId?: number,
 }
 
 let initialState: InitialState = {
   length: 0,
-  coords: null,
+  coords: [[0,0]],
   direction: "RIGHT",
 }
 
