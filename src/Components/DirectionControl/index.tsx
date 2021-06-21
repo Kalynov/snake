@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { TDirection } from "../../ARSs/snake/types"
 
 import {
@@ -16,7 +16,7 @@ export const DirectionControl = ({
     setDirection
 }:IDirectionControlProp) => {
 
-    const keyControlHandler = (event: KeyboardEvent) => {
+    const keyControlHandler = useCallback((event: KeyboardEvent) => {
         const keyName = event.key;
         switch (keyName) {
             case "ArrowDown":
@@ -40,12 +40,12 @@ export const DirectionControl = ({
                 break
             }
         }
-    }
+    },[setDirection])
 
     useEffect(()=> {
         document.addEventListener("keydown", keyControlHandler);
         return () => document.removeEventListener("keydown", keyControlHandler)
-    },[]);
+    },[keyControlHandler]);
 
    
 

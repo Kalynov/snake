@@ -34,7 +34,7 @@ export const GameArea = () => {
     }))
     dispatch(snakeSetLength(3));
     dispatch(snakeSetCoords([[49,50],[49,49],[49,48],[48,48],[47,48],[46,48],[45,48]]))
-  },[])
+  },[dispatch])
 
   const grid = area.area && area.area.map((el,i) => {
     return el.map((element, j) => {
@@ -48,8 +48,8 @@ export const GameArea = () => {
   })
 
   const step = () => {
-    let selfCross = false
-    const snakeBodyCoords = snake.coords.slice(1)
+    //let selfCross = false
+    //const snakeBodyCoords = snake.coords.slice(1)
     // snake.coords.forEach(el => {
     //   if(el[0] + 1)
     // })

@@ -1,6 +1,6 @@
 import {createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
-import area from "./area/reducer"
+import { area } from "./area/reducer"
 import { snake } from "./snake/reducer"
 import { game } from "./game/reducer"
 

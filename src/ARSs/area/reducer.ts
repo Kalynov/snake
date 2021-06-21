@@ -14,7 +14,7 @@ let initialState: InitialState = {
     area: null
   }
 
-export default  (state = initialState, action: any) : InitialState => {
+export const  area = (state = initialState, action: any) : InitialState => {
 
     switch (action.type){
        case AREA_SET_SIZE: {
@@ -26,6 +26,4 @@ export default  (state = initialState, action: any) : InitialState => {
     }
       default: return state;
     }
-
-  
 }
