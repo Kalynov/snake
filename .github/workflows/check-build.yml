@@ -4,11 +4,14 @@ on:
   push:
     branches:
       - '**'
+      - '!gh-pages'
+      - '!main'
 
 jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+
     
     steps:
     - name: Checkout code
