@@ -27,3 +27,5 @@ export const  area = (state = initialState, action: any) : InitialState => {
       default: return state;
     }
 }
+
+// добавили херню чтоб проверить
