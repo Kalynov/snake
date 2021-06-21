@@ -37,14 +37,14 @@ jobs:
       # - name: Verify formatting
       #   run: deno fmt --check
 
-      - name: Run linter
-        run: deno lint
+#       - name: Run linter
+#         run: deno lint
 
       - name: Cache dependencies
         run: deno cache deps.ts
 
-      - name: Run tests
-        run: deno test -A --unstable
+#       - name: Run tests
+#         run: deno test -A --unstable
         
       - name: Run build
         run: deno build
