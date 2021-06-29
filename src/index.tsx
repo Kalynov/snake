@@ -8,12 +8,7 @@ import { Provider } from 'react-redux';
 import store from './ARSs/reducers';
 
 ReactDOM.render(
-  <Provider  store = {store}>
-    <React.StrictMode>
-    <App />
-  </React.StrictMode>
-  </Provider>,
-  
+  <App />,
   document.getElementById('root')
 );
 

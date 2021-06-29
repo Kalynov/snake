@@ -1,17 +1,6 @@
 
 import { GAME_PLAY, GAME_PAUSE, GAME_CRASH } from  "./actions";
-import { TTimer } from "../../globalTypes";
-
-
-interface InitialState {
-  play: boolean;
-  pause: boolean;
-  score: number;
-  speed: number;
-  timerId?: TTimer;
-  crash: boolean;
-  classic: boolean;
-}
+import { InitialState } from "./types";
 
 let initialState: InitialState = {
     play: false,
@@ -28,13 +17,15 @@ export const game =  (state = initialState, action: any) : InitialState => {
         return {
           ...state,
           play: true,
+          pause: false,
           timerId: action.timerId
         }
       }
       case GAME_PAUSE: {
         return {
           ...state,
-          play: true,
+          play: false,
+          pause: true,  
           timerId: undefined
         }
       }
